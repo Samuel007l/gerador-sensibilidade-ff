@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Sensibilidade FF</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ff7a18, #ff2f00);
+      color: #333;
+    }
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    .options {
+      display: flex;
+      gap: 10px;
+    }
+    .option {
+      flex: 1;
+      padding: 15px;
+      border-radius: 15px;
+      background: #f1f1f1;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .option.active {
+      background: #ff7a18;
+      color: #fff;
+    }
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ff7a18, #ff2f00);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result div {
+      background: #f7f7f7;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🎯 Sensibilidade FF</h1>
+      <h2>Tipo de celular</h2>
+      <div class="options">
+        <div class="option active" onclick="setTipo('fraco', this)">📱 Fraco</div>
+        <div class="option" onclick="setTipo('forte', this)">🚀 Forte</div>
+      </div>
+      <br />
+      <button class="btn" onclick="gerar()">Gerar Sensibilidade Perfeita</button>
+    </div><div class="card result" id="resultado" style="display:none;">
+  <h2>Perfil Pro Gamer</h2>
+  <div><span>🎮 Geral</span><span id="geral"></span></div>
+  <div><span>🔴 Ponto Vermelho</span><span id="vermelho"></span></div>
+  <div><span>🔭 4x</span><span id="x4"></span></div>
+  <div><span>🔍 2x</span><span id="x2"></span></div>
+  <div><span>🎯 AWM</span><span id="awm"></span></div>
+</div>
+
+  </div>  <script>
+    let tipo = 'fraco';
+
+    function setTipo(t, el) {
+      tipo = t;
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function gerar() {
+      const base = tipo === 'fraco' ? 90 : 110;
+      document.getElementById('geral').innerText = base + Math.floor(Math.random()*10);
+      document.getElementById('vermelho').innerText = base + 10 + Math.floor(Math.random()*10);
+      document.getElementById('x4').innerText = base - 20 + Math.floor(Math.random()*10);
+      document.getElementById('x2').innerText = base - 5 + Math.floor(Math.random()*10);
+      document.getElementById('awm').innerText = base - 30 + Math.floor(Math.random()*10);
+      document.getElementById('resultado').style.display = 'block';
+    }
+  </script></body>
+</html>
